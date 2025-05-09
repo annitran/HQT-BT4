@@ -6,6 +6,7 @@ AS
 BEGIN
     -- [1] Xác định mã tựa sách sẽ cấp cho tựa sách này thoả quy định QĐ-2
     DECLARE @newMatuasach INT
+
     SELECT @newMatuasach = MIN(ts.ma_tuasach + 1)
     FROM tuasach AS ts
     WHERE NOT EXISTS (
@@ -19,7 +20,7 @@ BEGIN
         SELECT @newMatuasach = MAX(ts2.ma_tuasach + 1)
         FROM tuasach AS ts2
     END
-    
+
     -- [2] Kiểm tra phải có ít nhất 1 trong 3 thuộc tính tựa sách, tác giả, tóm tắt
     -- khác với các bộ trong bảng tựa sách đã có
     IF NOT EXISTS (

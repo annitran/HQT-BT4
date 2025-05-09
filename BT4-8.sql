@@ -6,7 +6,7 @@ BEGIN
 
     -- [1] Kiểm tra mã isbn nếu không tồn tại thì thông báo & ngừng xử lý
     IF NOT EXISTS (
-        SELECT 1 
+        SELECT 1
         FROM dausach
         WHERE isbn = @newISBN
     )
